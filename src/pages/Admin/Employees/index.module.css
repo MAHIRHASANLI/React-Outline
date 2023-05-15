@@ -1,0 +1,18 @@
+.modal{
+    width:800px;
+}
+.table{
+    width: 90%;
+    margin:30px auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.image{
+    width:60px;
+    height:60px;
+    border-radius:3px;
+    transition:.2s linear;
+    z-index: 9999;
+}
+.image:hover{
+transform: scale(1.2)
+}

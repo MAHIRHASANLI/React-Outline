@@ -1,0 +1,67 @@
+{
+  "employes": [
+    {
+      "id": 4,
+      "name": "Erhan",
+      "surname": "Ufuk",
+      "salary": 2000,
+      "position": "cayci",
+      "image": "https://media0018.elcinema.com/uploads/_315x420_f76a282251a8ebcae260310270161bddb5751627b1bf959994bcad0b1a353f86.jpg",
+      "age": "23"
+    },
+    {
+      "id": 5,
+      "name": "Mehmet",
+      "surname": "Karahanli",
+      "salary": 10000,
+      "position": "Baron",
+      "image": "https://img.piri.net/mnresize/900/-/resim/upload/2017/11/21/04/02/24641b1cmaxresdefault.jpg",
+      "age": "55"
+    },
+    {
+      "name": "Polat",
+      "surname": "Alemdar",
+      "age": "33",
+      "salary": "10000",
+      "position": "Mafya babasi",
+      "image": "https://i.pinimg.com/originals/04/b9/b6/04b9b60ff6d789d83a2cfd3ed167caf9.png",
+      "id": "WuLk6WkMr_WvHe6h6sSCv"
+    },
+    {
+      "name": "Kara",
+      "surname": "Karali",
+      "salary": "30000",
+      "position": "usta",
+      "age": "44",
+      "image": "https://i1.sndcdn.com/artworks-000059528387-ilmk01-t500x500.jpg",
+      "id": "Pa1R0s_dLAQrwTPoDPJmY"
+    },
+    {
+      "name": "Abdulhey",
+      "surname": "Coban",
+      "salary": "4600",
+      "position": "Mafya babasi",
+      "age": "29",
+      "image": "https://i4.hurimg.com/i/hurriyet/75/750x422/55eb340bf018fbb8f8b20eb5.jpg",
+      "id": "Pk2oGoteZnujY4UaXODMq"
+    },
+    {
+      "name": "Laz Ziya",
+      "surname": "Yilmaz",
+      "salary": "456",
+      "position": "Armator",
+      "age": "23",
+      "image": "https://i1.sndcdn.com/artworks-KKRIhQe5tuztfOUw-sRxpEw-t500x500.jpg",
+      "id": "LSanj4ryZikyHBB5cRLUq"
+    },
+    {
+      "name": "Kilic",
+      "surname": "Yilmaz",
+      "salary": "1000067",
+      "position": "cayci",
+      "age": "50",
+      "image": "https://i1.sndcdn.com/artworks-000194000806-6g3zqq-t500x500.jpg",
+      "id": "28cHmlA_0_tmGAkipqnkm"
+    }
+  ]
+}
