@@ -1,93 +1,36 @@
-import { useEffect, useState } from "react";
-import { getPeopleByID, putPeople } from "../../../api/requests";
-import {  useNavigate, useParams } from "react-router-dom";
-
-import * as React from 'react';
+import React from 'react'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import Swal from 'sweetalert2'
-import { Toaster} from 'react-hot-toast';
 
 
-const EditEmployee = () => {
-  const { id } = useParams();
-  const navigate=useNavigate()
-let [employesPut, setEmployesPut] = useState({
-        name: '',
-        surname: '',
-        image: '',
-        salary: '',
-        age: '',
-        position: '',
-  });
-  useEffect(() => {
-    getPeopleByID(id).then((item) => {
-        setEmployesPut(item);
-        // Formik.values.name = item.name;
-        // Formik.values.surname = item.surname;
-        // Formik.values.age = item.age;
-        // Formik.values.values.image = item.values.image;
-        // Formik.values.salary = item.salary;
-        // Formik.values.position = item.position;
-    });
-  }, [id]);
-  
 
-
+const sssss = () => {
   return (
-    <>
     <div className="magic-form">
     <Formik
       initialValues={{
         name: '',
         surname: '',
-        image: '',
         salary: '',
         age: '',
         agree: false,
         position: '',
       }}
       validationSchema={Yup.object({
-        name: Yup.string().min(5,'Minimum herf sayini kecmemisiz').required('Adi bos saxlamisiz'),
-        surname: Yup.string().min(6,"Minimum herf sayini kecmemisiz").required('Soyadi bos saxlamisiz'),
-        image: Yup.string().min(5,"Link tamamlanmiyib").required('Image bos saxlamisiz'),
-        salary: Yup.number().integer().max(2500,'Developer bu qeder maas alar??').positive("Menfi maash olmur").required('Maash bos saxlamisiz'),
-        age: Yup.number().integer().positive("Menfi yash olmur").required('Yash bos saxlamisiz'),
-        agree: Yup.bool().oneOf([true], 'Risq edinde !'),
+        name: Yup.string().required('İsim boş birakilamaz'),
+        surname: Yup.string().min(6,"herf azdi").required('Email boş birakilamaz'),
+        salary: Yup.number().required('salartim boş birakilamaz'),
+        age: Yup.number().required('ageim boş birakilamaz'),
+        agree: Yup.bool().oneOf([true], 'Koşullari kabul etmelisiniz'),
         position: Yup.string()
-          .required('Olmadiki vezife secindee!')
+          .required('Hadi ama herkesin sevdiği bir renk vardir!')
           .oneOf(['developer', 'designer',  'supervisor', 'manager', 'engineer']),
       })}
-      
       onSubmit={(values, { setSubmitting, resetForm }) => {
         console.log(values);
         setTimeout(() => {
-          // values.id = nanoid();
-          putPeople(id,values)
-                   setSubmitting(false);
-                   resetForm();
-                   navigate("/admin")
-                   let timerInterval
-                   Swal.fire({
-                  title: 'Auto close alert!',
-                  html: 'I will close in <b></b> milliseconds.',
-                  timer: 2000,
-                  timerProgressBar: true,
-                  didOpen: () => {
-                    Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                      b.textContent = Swal.getTimerLeft()
-                    }, 100)
-                  },
-                  willClose: () => {
-                    clearInterval(timerInterval)
-                  }
-                }).then((result) => {
-                  if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('I was closed by the timer')
-                  }
-                })
+          setSubmitting(false);
+          resetForm();
         }, 2000);
       }}
     >
@@ -102,12 +45,12 @@ let [employesPut, setEmployesPut] = useState({
         handleChange,
       }) => (
         <form className="magic-form" onSubmit={handleSubmit}>
-          <h3>Edit Employee</h3>
+          <h3>Add Employee</h3>
           <label htmlFor="name">Name</label>
           <input
             id="name"
             type="text"
-            placeholder="Name"
+            placeholder="Mahir"
             className="input"
             value={values.name}
             onChange={handleChange}
@@ -115,14 +58,14 @@ let [employesPut, setEmployesPut] = useState({
           {errors.name && touched.name && (
             <div className="input-feedback">{errors.name}</div>
           )}
-
+////
           <label htmlFor="surname" className="topMargin">
             Surname
           </label>
           <input
             id="surname"
             type="text"
-            placeholder="Surname"
+            placeholder="Hasanli"
             className="input"
             value={values.surname}
             onChange={handleChange}
@@ -130,28 +73,14 @@ let [employesPut, setEmployesPut] = useState({
           {errors.surname && touched.surname && (
             <div className="input-feedback">{errors.surname}</div>
           )}
-           <label htmlFor="surname" className="topMargin">
-            Image
-          </label>
-          <input
-            id="image"
-            type="text"
-            placeholder="Image"
-            className="input"
-            value={values.image}
-            onChange={handleChange}
-          />
-          {errors.image && touched.image && (
-            <div className="input-feedback">{errors.image}</div>
-          )}
-
+/////////
           <label htmlFor="salary" className="topMargin">
           Salary
           </label>
           <input
             id="salary"
             type="number"
-            placeholder="Salary"
+            placeholder="Hasanli"
             className="input"
             value={values.salary}
             onChange={handleChange}
@@ -159,14 +88,14 @@ let [employesPut, setEmployesPut] = useState({
           {errors.salary && touched.salary && (
             <div className="input-feedback">{errors.salary}</div>
           )}
-         
+          ///////////////
           <label htmlFor="age" className="topMargin">
           Age
           </label>
           <input
             id="age"
             type="number"
-            placeholder="Age"
+            placeholder="Hasanli"
             className="input"
             value={values.age}
             onChange={handleChange}
@@ -174,7 +103,7 @@ let [employesPut, setEmployesPut] = useState({
           {errors.age && touched.age && (
             <div className="input-feedback">{errors.age}</div>
           )}
-
+/////
           <label htmlFor="position" className="topMargin">
           Position         
            </label>
@@ -209,7 +138,7 @@ let [employesPut, setEmployesPut] = useState({
               onChange={handleChange}
             />
             <label htmlFor="agree" className="checkbox-label">
-            Qebul edin
+             Qebul ediyorum.
             </label>
           </div>
           {errors.agree && (
@@ -217,18 +146,80 @@ let [employesPut, setEmployesPut] = useState({
           )}
 
           <button type="submit" disabled={!dirty || isSubmitting}>
-            Edit
+            ADD
           </button>
         </form>
       )}
     </Formik>
   </div>
-  <Toaster
-  position="top-center"
-  reverseOrder={false}
-/>
-    </>
-  );
-    }
+  )
+}
 
-export default EditEmployee;
+export default sssss;
+
+
+
+  {/* <Divider style={{margin:"50px auto",color:"rgb(206,148,163)"}} orientation="center">Edit Employee</Divider>
+      <Row  gutter={16}>
+        <img style={{width:"150px",height:"150px",margin:"-20px auto 20px",borderRadius:"7px"}} src={employesPut.image} alt="" />
+        <Col style={{display:"flex",margin:"0 auto"}} className="gutter-row"  span={23}>
+          <TextField
+            value={employesPut.name}
+            name="name"
+            onChange={(e) => handleChenge(e)}
+            style={{ width: "200px" }}
+            id="standard-basic"
+            label="Name"
+            variant="standard"
+          />
+          <TextField
+            value={employesPut.surname}
+            name="surname"
+            onChange={(e) => handleChenge(e)}
+            style={{ width: "200px", marginLeft: "10px" }}
+            id="standard-basic"
+            label="Surname"
+            variant="standard"
+          />
+          <TextField
+            value={employesPut.position}
+            name="position"
+            onChange={(e) => handleChenge(e)}
+            style={{ width: "200px", marginLeft: "10px" }}
+            id="standard-basic"
+            label="Position"
+            variant="standard"
+          />
+          <TextField
+            value={employesPut.salary}
+            name="salary"
+            onChange={(e) => handleChenge(e)}
+            style={{ width: "200px", marginLeft: "10px" }}
+            id="standard-basic"
+            label="Salary"
+            variant="standard"
+          />
+          <TextField
+            value={employesPut.age}
+            name="age"
+            onChange={(e) => handleChenge(e)}
+            style={{ width: "200px", marginLeft: "10px" }}
+            id="standard-basic"
+            label="Age"
+            variant="standard"
+          />
+          <TextField
+            value={employesPut.image}
+            name="image"
+            onChange={(e) => handleChenge(e)}
+            style={{ width: "200px", marginLeft: "10px" }}
+            id="standard-basic"
+            label="Image"
+            variant="standard"
+          />
+          
+        </Col>
+      <Button  style={{margin:"50px auto"}} danger onClick={(e) => handeClick(e)}>
+            Put Employee
+          </Button>
+      </Row> */}

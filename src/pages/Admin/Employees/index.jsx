@@ -208,7 +208,7 @@ const Employees = () => {
  
   return (
 <>
-<Table className={Style.table} columns={columns} dataSource={employesAdmin} />
+<Table key={employesAdmin.id} className={Style.table} columns={columns} dataSource={employesAdmin} />
       
 </>
   )

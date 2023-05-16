@@ -1,13 +1,14 @@
 {
   "employes": [
     {
-      "id": 4,
       "name": "Erhan",
-      "surname": "Ufuk",
-      "salary": 2000,
-      "position": "cayci",
-      "image": "https://media0018.elcinema.com/uploads/_315x420_f76a282251a8ebcae260310270161bddb5751627b1bf959994bcad0b1a353f86.jpg",
-      "age": "23"
+      "surname": "Ufluyen",
+      "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT8W0zdK9JEyxqTNu77oA493pCjcimTdqVvxssIQnlmC4etQKqC",
+      "salary": 200,
+      "age": 44,
+      "agree": true,
+      "position": "manager",
+      "id": 4
     },
     {
       "id": 5,
@@ -28,12 +29,13 @@
       "id": "WuLk6WkMr_WvHe6h6sSCv"
     },
     {
-      "name": "Kara",
-      "surname": "Karali",
-      "salary": "30000",
-      "position": "usta",
-      "age": "44",
-      "image": "https://i1.sndcdn.com/artworks-000059528387-ilmk01-t500x500.jpg",
+      "name": "Karakara",
+      "surname": "Kralkara",
+      "image": "https://i1.sndcdn.com/artworks-000015937638-v5d80b-t500x500.jpg",
+      "salary": 998,
+      "age": 48,
+      "agree": true,
+      "position": "designer",
       "id": "Pa1R0s_dLAQrwTPoDPJmY"
     },
     {
@@ -62,6 +64,16 @@
       "age": "50",
       "image": "https://i1.sndcdn.com/artworks-000194000806-6g3zqq-t500x500.jpg",
       "id": "28cHmlA_0_tmGAkipqnkm"
+    },
+    {
+      "name": "Mahir",
+      "surname": "Hasanli",
+      "image": "https://i.cnnturk.com/i/cnnturk/75/740x416/546886b9e50aa808f8a3b746.jpg",
+      "salary": 400,
+      "age": 19,
+      "agree": true,
+      "position": "developer",
+      "id": "Za2sBCIoS3P8eViOnzIMS"
     }
   ]
 }
