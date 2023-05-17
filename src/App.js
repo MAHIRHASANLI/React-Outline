@@ -1,12 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ROUTES } from "./routes/ROUTES";
+import { BasketContextProvider } from "./pages/globalCompanent/BasketContext";
+// import { BasketContextProvider } from "./pages/globalCompanent/BasketContext";
 
 
 const routes = createBrowserRouter(ROUTES)
 
 function App() {
   return (
-    <RouterProvider router={routes}/>
+    <BasketContextProvider>
+      <RouterProvider router={routes}/>
+    </BasketContextProvider>
   );
 }
 

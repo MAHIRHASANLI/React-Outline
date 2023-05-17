@@ -7,12 +7,12 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import AdbIcon from "@mui/icons-material/Adb";
-
 import style from "./index.module.css"
+import { useBasketContext } from "../../../pages/globalCompanent/BasketContext";
 // const [count] = useOutletContext()
 
-const Navbar = ({count}) => {
-
+const Navbar = () => {
+  const[favorites] = useBasketContext()
   return (
     <AppBar className={style.Appbar} position="static">
       <Container maxWidth="xl">
@@ -53,7 +53,7 @@ const Navbar = ({count}) => {
               <Button variant="outlined">
                 <Link to="/favorites" >
                   Favorites
-                </Link>  <span>{count.length}</span>
+                </Link>  <span>{favorites.length}</span>
               </Button>
             </div>
           </Box>

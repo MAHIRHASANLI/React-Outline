@@ -19,8 +19,9 @@ import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import { TextField } from "@mui/material";
 
-import { useOutletContext } from "react-router-dom";
-import { Toaster, toast } from "react-hot-toast";
+import { Toaster} from "react-hot-toast";
+import { useBasketContext } from "../../globalCompanent/BasketContext";
+import Swal from "sweetalert2";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -30,6 +31,17 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Exployees = () => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-right',
+    iconColor: 'white',
+    customClass: {
+      popup: 'colored-toast'
+    },
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true
+  })
   let [tramp, setTramp] = useState([]);
   let [filterTramp, setFilterTramp] = useState([]);
   useEffect(() => {
@@ -47,7 +59,8 @@ const Exployees = () => {
     );
     setTramp(filteredEmployes);
   }
-  const [count, setCount] = useOutletContext();
+  // const [count, setCount] = useOutletContext();
+  const[favorites, setFavorites] = useBasketContext()
   return (
     <>
       <Box className={Style.grid} sx={{ flexGrow: 1 }}>
@@ -64,7 +77,6 @@ const Exployees = () => {
             tramp.map((item) => {
               return (
                 <Grid key={item.id} item xs={12} sm={6} md={4} lg={3} xl={3}>
-                  <Item>
                     <Card
                       className={Style.Cart}
                       sx={{ border: "0", maxWidth: 345 }}
@@ -105,23 +117,26 @@ const Exployees = () => {
                       <CardActions>
                         <Button
                           onClick={() => {
-                            if (!localStorage.getItem("favorites")) {
-                              localStorage.setItem(
-                                "favorites",
-                                JSON.stringify([])
-                              );
-                            } else {
-                              let previousfavorites = JSON.parse(
-                                localStorage.getItem("favorites")
-                              );
-                              localStorage.setItem(
-                                "favorites",
-                                JSON.stringify([...previousfavorites, item])
-                              );
+                            let previousfavorites = JSON.parse(localStorage.getItem("favorites"))
+                            let Faindedirik = previousfavorites.find((data) => data.id === item.id)
+                            if(Faindedirik){
+                              Toast.fire({
+                                icon: 'error',
+                                title: 'Error' })
+                            
+                              
                             }
-                            setCount([...count, item]);
-
-                            toast.success(`${item.name} Successfully toasted!`);
+                            else{
+                               
+                              localStorage.setItem("favorites",JSON.stringify([...previousfavorites, item]));
+                              Toast.fire({
+                                icon: 'success',
+                                title: 'Success'
+                              })
+                              setFavorites([...favorites, item ]);
+                            }
+                         
+                            
                           }}
                           variant="contained"
                           size="small"
@@ -130,7 +145,6 @@ const Exployees = () => {
                         </Button>
                       </CardActions>
                     </Card>
-                  </Item>
                 </Grid>
               );
             })}
